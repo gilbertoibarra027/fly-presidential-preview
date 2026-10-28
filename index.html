@@ -1,0 +1,306 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Fly Presidential (Concept Preview)</title>
+<meta name="theme-color" content="#FFFFFF">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0B1626;--ink:#14213A;--bg:#FFFFFF;--bg2:#F7F5F0;--line:rgba(11,22,38,.12);--gold:#A3824A;--gold2:#B99B62;--mute:rgba(11,22,38,.62);--serif:'Cormorant Garamond','Cormorant',Georgia,'Times New Roman',serif;--sans:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;--ease:cubic-bezier(.22,.61,.36,1)}
+*{box-sizing:border-box}html{overflow-x:clip;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--navy);font:300 16px/1.7 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:clip}
+h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;letter-spacing:.005em}
+a{color:inherit}img{max-width:100%;display:block}
+.eyebrow{display:inline-flex;align-items:center;gap:14px;color:var(--gold);font:500 11px var(--sans);letter-spacing:.32em;text-transform:uppercase}
+.eyebrow:before{content:"";width:28px;height:1px;background:var(--gold);opacity:.7}
+.tag{position:absolute;z-index:6;font:500 9px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--navy);background:rgba(255,255,255,.78);border:1px solid rgba(11,22,38,.14);padding:5px 9px;border-radius:2px;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+/* nav: white text over the hero photo, navy on white once the hero turns white */
+nav{position:fixed;inset:0 0 auto 0;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:26px 56px;color:#fff;transition:background .8s var(--ease),padding .8s var(--ease),border-color .8s,color .8s;border-bottom:1px solid transparent}
+nav.light{color:var(--navy)}
+nav.solid{background:rgba(255,255,255,.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:16px 56px;border-color:var(--line);color:var(--navy)}
+.wm{display:flex;flex-direction:column;align-items:flex-start;text-decoration:none;line-height:1}
+.wm b{font:500 17px var(--serif);letter-spacing:.42em;margin-right:-.42em;white-space:nowrap}
+.wm small{display:flex;align-items:center;gap:8px;margin-top:6px;font:400 8.5px var(--sans);letter-spacing:.38em;color:var(--gold2)}.wm small:before{content:"";width:16px;height:1px;background:currentColor}
+nav:not(.light):not(.solid) .wm small{color:#fff;opacity:.85}
+.links{display:flex;align-items:center;gap:34px}.links a{text-decoration:none;font:400 12px var(--sans);letter-spacing:.18em;text-transform:uppercase;opacity:.78;transition:opacity .5s}.links a:hover{opacity:1}
+.links a.cta{opacity:1;border:1px solid currentColor;padding:12px 22px;transition:background .6s var(--ease),color .6s,border-color .6s}
+nav.solid .links a.cta,nav.light .links a.cta{border-color:var(--gold)}
+.links a.cta:hover{background:var(--gold);border-color:var(--gold);color:#fff}
+.btn{color:var(--navy);border:1px solid var(--gold);padding:12px 22px;border-radius:0;transition:background .6s var(--ease),color .6s}
+.btn:hover{background:var(--gold);color:#fff}
+.burger{display:none;background:none;border:0;padding:8px;cursor:pointer;width:40px;height:40px;position:relative;color:inherit}
+.burger i,.burger:before,.burger:after{content:"";position:absolute;left:9px;right:9px;height:1px;background:currentColor;transition:transform .5s var(--ease),opacity .4s}
+.burger:before{top:14px}.burger i{top:20px}.burger:after{top:26px}
+.burger[aria-expanded=true]:before{transform:translateY(6px) rotate(45deg)}.burger[aria-expanded=true] i{opacity:0}.burger[aria-expanded=true]:after{transform:translateY(-6px) rotate(-45deg)}
+/* hero: layered photo + AI scene, driven by scroll */
+#hero{position:relative;height:520vh}
+#stage{position:sticky;top:0;height:100vh;overflow:hidden;background:#cfe0f2}
+.L{position:absolute;will-change:transform,opacity;pointer-events:none}
+.cover{inset:0;width:100%;height:100%;object-fit:cover}
+.scene{left:50%;top:50%;width:max(100vw,177.78vh);height:max(56.25vw,100vh);transform:translate(-50%,-50%)}
+.scene>*{position:absolute;left:0;width:100%}
+.scene .sky{top:0;height:100%;object-fit:cover}
+.cl{top:30%;height:auto}
+.cl img{width:100%;display:block}.cl i,#cl2 i{display:block;position:relative;height:150vh;margin-top:-24vh;background:linear-gradient(rgba(255,255,255,0),#fff 22vh)}
+#cl2{left:50%;top:0;width:max(170vw,300vh);transform:translate(-50%,100vh)}
+#cl2 img{width:100%;transform:scaleX(-1)}
+#jet{left:33vw;top:28vh;width:34vw;transform-origin:50% 50%;filter:drop-shadow(0 8px 18px rgba(11,22,38,.18))}
+#white{background:#fff;inset:0;opacity:0}
+.shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(11,22,38,.38) 0%,rgba(11,22,38,0) 20%,rgba(255,255,255,0) 52%,rgba(255,255,255,.72) 82%,rgba(255,255,255,.9) 100%)}
+#stage .tag{top:96px;right:56px;transition:opacity .6s}
+.cap{position:absolute;z-index:5;left:8vw;bottom:14vh;max-width:760px;opacity:0;transform:translateY(18px);transition:opacity 1.3s var(--ease),transform 1.6s var(--ease);pointer-events:none;color:var(--navy)}
+.cap.on{opacity:1;transform:none;pointer-events:auto}
+.cap .k{display:block;margin-bottom:18px;color:var(--gold)}
+.cap h1{font-size:clamp(44px,6.2vw,92px);line-height:1.02;font-weight:400;text-shadow:0 1px 24px rgba(255,255,255,.55)}
+.cap h1 em{font-style:italic;color:var(--gold)}
+.cap .btn{display:inline-block;margin-top:34px;text-decoration:none;font:500 12px var(--sans);letter-spacing:.24em;text-transform:uppercase;padding:18px 32px;background:var(--gold);border-color:var(--gold);color:#fff}
+.cap .btn:hover{background:var(--navy);border-color:var(--navy)}
+.hint{position:absolute;z-index:5;left:50%;bottom:28px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;font:400 9.5px var(--sans);letter-spacing:.36em;color:var(--navy);transition:opacity 1s}
+.hint i{width:1px;height:44px;background:linear-gradient(var(--gold),transparent);animation:drip 2.8s var(--ease) infinite;transform-origin:top}
+@keyframes drip{0%{transform:scaleY(0);opacity:1}60%{transform:scaleY(1);opacity:1}100%{transform:scaleY(1);opacity:0}}
+.prog{position:absolute;z-index:5;right:56px;bottom:14vh;display:flex;flex-direction:column;gap:12px}.prog span{width:1px;height:26px;background:rgba(11,22,38,.2);transition:background .8s}.prog span.on{background:var(--gold)}
+#stickyEnd{position:absolute;left:0;width:1px;top:420vh;bottom:0;pointer-events:none}
+/* sections */
+section{padding:150px 8vw;position:relative}
+.wrap{max-width:1180px;margin:0 auto}
+.lede{font:400 clamp(30px,3.6vw,50px)/1.15 var(--serif);max-width:820px;margin:26px 0 0;color:var(--navy)}
+.lede em{font-style:italic;color:var(--gold)}
+.body{color:var(--mute);max-width:520px;margin:26px 0 0;font-size:16px}
+.split{display:grid;grid-template-columns:1.05fr 1fr;gap:90px;align-items:center}
+.split.rev{grid-template-columns:1fr 1.05fr}.split.rev .mwrap{order:2}
+.mwrap{position:relative}
+.media{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--bg2)}
+.media img{width:100%;height:100%;object-fit:cover;transform:scale(1.08);transition:transform 2.6s var(--ease)}
+.rv.in .media img,.media.rv.in img{transform:scale(1)}
+.media .tag{right:14px;bottom:14px}
+.inset{position:absolute;width:42%;left:-9%;bottom:-11%;aspect-ratio:4/5;border:8px solid var(--bg2);box-shadow:0 24px 60px rgba(11,22,38,.14)}
+.inset .tag{right:8px;bottom:8px;font-size:8px}
+.points{list-style:none;padding:0;margin:44px 0 0;border-top:1px solid var(--line)}
+.points li{display:grid;grid-template-columns:54px 1fr;gap:10px;padding:22px 0;border-bottom:1px solid var(--line)}
+.points b{font:400 13px var(--serif);color:var(--gold);letter-spacing:.1em;padding-top:3px}
+.points h3{font-size:23px}.points p{margin:4px 0 0;color:var(--mute);font-size:14.5px}
+.alt{background:var(--bg2)}
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap}
+.head .note{font-size:12px;color:var(--mute);letter-spacing:.06em;max-width:300px}
+.wide{position:relative;aspect-ratio:21/8;overflow:hidden;margin-top:64px;background:var(--bg2)}
+.wide img{width:100%;height:100%;object-fit:cover;transform:scale(1.06);transition:transform 2.6s var(--ease)}.wide.in img{transform:scale(1)}
+.wide .tag{right:14px;bottom:14px}
+.fleet{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:28px}
+.jet{background:#fff;padding:46px 38px 40px;position:relative;transition:background .9s var(--ease)}
+.jet:hover{background:#FBFAF7}
+.jet .tag{position:static;display:inline-block;margin-bottom:34px;background:transparent;color:var(--gold);border-color:rgba(163,130,74,.45)}
+.jet svg{width:100%;height:64px;margin-bottom:34px;stroke:var(--gold);fill:none;stroke-width:1;opacity:.9}
+.jet h3{font-size:32px}.jet p{color:var(--mute);font-size:14.5px;margin:12px 0 26px;min-height:72px}
+.jet .use{font:400 11px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.dest{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:70px}
+.dst{border-top:1px solid var(--gold);padding-top:22px}
+.dst h3{font-size:30px;font-weight:400}.dst p{margin:6px 0 0;color:var(--mute);font-size:14px}
+.dst small{display:block;margin-top:14px;font:400 10px var(--sans);letter-spacing:.24em;color:var(--gold);text-transform:uppercase}
+.band{position:relative;min-height:78vh;display:flex;align-items:center;overflow:hidden;padding:0 8vw;color:var(--navy)}
+.band img{position:absolute;inset:-6% 0;width:100%;height:112%;object-fit:cover;object-position:50% 70%;will-change:transform}
+.band:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.92),rgba(255,255,255,.55) 52%,rgba(255,255,255,0) 80%)}
+.band .wrap{position:relative;z-index:2;width:100%}
+.band .tag{right:20px;bottom:20px}
+.tiers{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:70px}
+.tier{border:1px solid var(--line);background:#fff;padding:50px 46px;position:relative;transition:border-color .9s,box-shadow .9s}
+.tier:hover{border-color:rgba(163,130,74,.55);box-shadow:0 20px 50px rgba(11,22,38,.06)}
+.tier h3{font-size:36px}.tier .sub{font:400 11px var(--sans);letter-spacing:.24em;color:var(--gold);text-transform:uppercase}
+.tier ul{list-style:none;padding:0;margin:26px 0 0}.tier li{padding:12px 0;border-top:1px solid var(--line);color:var(--mute);font-size:14.5px}
+.tier li:before{content:"";display:inline-block;width:5px;height:5px;transform:rotate(45deg);border:1px solid var(--gold);margin-right:14px;vertical-align:2px}
+.fine{margin-top:26px;font-size:12px;color:var(--mute);opacity:.85}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:70px;margin-top:80px}
+.pillar svg{width:38px;height:38px;stroke:var(--gold);fill:none;stroke-width:1}
+.pillar h3{font-size:30px;margin-top:26px}.pillar p{color:var(--mute);font-size:15px;margin:10px 0 0}
+/* form */
+#quote{background:#fff}
+#quote .head{justify-content:center;text-align:center;flex-direction:column;align-items:center}
+form{max-width:860px;margin:70px auto 0;display:grid;grid-template-columns:1fr 1fr;gap:34px 34px}
+.f{display:flex;flex-direction:column;gap:6px;min-width:0}.f.full{grid-column:1/-1}
+label,.lbl{font:400 10.5px var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+input,select{width:100%;min-width:0;background:transparent;border:0;border-bottom:1px solid rgba(11,22,38,.22);color:var(--navy);font:300 17px var(--sans);padding:10px 0 12px;border-radius:0;outline:none;transition:border-color .6s;-webkit-appearance:none;appearance:none}
+input:focus,select:focus{border-color:var(--gold)}
+select{background-image:linear-gradient(45deg,transparent 50%,var(--gold) 50%),linear-gradient(135deg,var(--gold) 50%,transparent 50%);background-position:calc(100% - 10px) 52%,calc(100% - 5px) 52%;background-size:5px 5px;background-repeat:no-repeat}
+input::placeholder{color:rgba(11,22,38,.36)}input[type=date]{color-scheme:light;min-height:46px}
+.trip{display:flex;gap:0;border:1px solid rgba(11,22,38,.18);width:max-content;max-width:100%;margin-top:8px}
+.trip button{background:none;border:0;color:var(--mute);font:400 11px var(--sans);letter-spacing:.2em;text-transform:uppercase;padding:13px 20px;cursor:pointer;transition:background .6s,color .6s}
+.trip button.on{background:var(--navy);color:#fff}
+.ret[hidden]{display:none}
+.submit{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-top:10px}
+.submit .btn{background:var(--gold);color:#fff;border:1px solid var(--gold);font:500 12px var(--sans);letter-spacing:.24em;text-transform:uppercase;padding:18px 38px;cursor:pointer}
+.submit .btn:hover{background:var(--navy);border-color:var(--navy)}
+.submit small{color:var(--mute);font-size:12px}
+.done{grid-column:1/-1;text-align:center;padding:40px 0}.done h3{font-size:40px;font-weight:400}.done p{color:var(--mute)}
+footer{padding:80px 8vw 60px;background:var(--navy);color:#fff}
+footer .row{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap;max-width:1180px;margin:0 auto}
+footer p{margin:0;color:rgba(255,255,255,.66);font-size:13px}
+footer .legal{max-width:1180px;margin:46px auto 0;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);font-size:11.5px;color:rgba(255,255,255,.5);letter-spacing:.04em;line-height:1.8}
+.sticky{display:none}
+.rv{opacity:0;transform:translateY(28px);transition:opacity 1.6s var(--ease),transform 1.8s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.15s}.rv.d2{transition-delay:.3s}.rv.d3{transition-delay:.45s}
+.cap.top{bottom:auto;top:23vh}
+#glow{position:absolute;inset:0;z-index:4;pointer-events:none;background:radial-gradient(60% 45% at 18% 32%,rgba(255,255,255,.7),rgba(255,255,255,0) 70%)}
+@media(prefers-reduced-motion:reduce){*{transition-duration:.01s!important;animation:none!important}.rv{opacity:1;transform:none}}
+@media(max-width:1024px){nav,nav.solid{padding-left:32px;padding-right:32px}.links{gap:22px}.split,.split.rev{gap:50px}.pillars{gap:40px}.jet{padding:40px 28px}}
+@media(max-width:760px){
+nav,nav.solid{padding:14px 20px;padding-top:max(14px,env(safe-area-inset-top))}
+nav.open{background:rgba(255,255,255,.97);color:var(--navy)}
+.wm b{font-size:14px;letter-spacing:.34em;margin-right:-.34em}.wm small{font-size:7.5px}
+.burger{display:block}
+.links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:rgba(255,255,255,.98);color:var(--navy);padding:8px 20px 26px;border-bottom:1px solid var(--line)}
+nav.open .links{display:flex}.links a{padding:16px 0;border-bottom:1px solid var(--line);font-size:13px;opacity:1}.links a.cta{margin-top:20px;text-align:center;border:1px solid var(--gold)}
+#hero{height:440vh}#stage{height:100svh}
+#jet{left:6vw;top:30svh;width:86vw}
+#stage .tag{top:78px;right:16px;font-size:8px}
+.cap{left:22px;right:22px;bottom:15svh}.cap.top{top:17svh}#glow{background:radial-gradient(90% 40% at 30% 26%,rgba(255,255,255,.75),rgba(255,255,255,0) 72%)}#ramp{object-position:80% 50%}.cap h1{font-size:44px;line-height:1.04}.cap .k{margin-bottom:14px}
+.cap .btn{display:block;text-align:center;margin-top:28px;padding:17px}
+.prog{display:none}.hint{bottom:20px}
+#stickyEnd{top:350vh}
+section{padding:96px 22px}
+.lede{font-size:31px}.body{font-size:15.5px}
+.split,.split.rev{grid-template-columns:1fr;gap:44px}.split.rev .mwrap{order:0}.media{aspect-ratio:4/4.6}
+.inset{width:44%;left:-6px;bottom:-14%;border-width:6px}
+#experience .mwrap{margin-bottom:40px}
+.wide{aspect-ratio:4/3;margin-top:40px}
+.fleet{grid-template-columns:1fr;margin-top:18px}.jet{padding:36px 26px}.jet p{min-height:0}
+.dest{grid-template-columns:1fr 1fr;gap:30px 18px;margin-top:46px}.dst h3{font-size:24px}
+.band{min-height:70svh;padding:0 22px;align-items:flex-start;padding-top:18svh}.band:after{background:linear-gradient(180deg,rgba(255,255,255,.9),rgba(255,255,255,.55) 45%,rgba(255,255,255,0) 75%)}.band img{object-position:70% 70%}
+.tiers{grid-template-columns:1fr;gap:18px;margin-top:46px}.tier{padding:36px 26px}.tier h3{font-size:31px}
+.pillars{grid-template-columns:1fr;gap:46px;margin-top:54px}
+form{grid-template-columns:1fr;gap:28px;margin-top:46px}
+input,select{font-size:16px}
+.trip{width:100%}.trip button{flex:1}
+.submit .btn{width:100%}
+footer{padding:60px 22px 120px}
+.sticky{display:block;position:fixed;left:16px;right:16px;bottom:max(16px,env(safe-area-inset-bottom));z-index:35;text-align:center;text-decoration:none;background:var(--gold);color:#fff;font:500 12px var(--sans);letter-spacing:.24em;text-transform:uppercase;padding:18px;box-shadow:0 10px 30px rgba(11,22,38,.22);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.sticky.hide{opacity:0;transform:translateY(24px);pointer-events:none}
+}
+</style></head><body id="top">
+<nav id="nav"><a class="wm" href="#top" aria-label="Fly Presidential, home"><b>FLY PRESIDENTIAL</b><small>FORT LAUDERDALE · FXE</small></a>
+<button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="links"><i></i></button>
+<div class="links" id="links"><a href="#charter">Charter</a><a href="#fleet">Fleet</a><a href="#jetcard">Jet Card</a><a href="#why">Why Presidential</a><a class="cta" href="#quote">Request a Quote</a></div></nav>
+
+<div id="hero"><div id="stage" aria-label="Scroll animation: private jets on a sunny ramp, then a jet climbing away and disappearing into the clouds">
+<div class="L scene" id="scene"><img class="sky" id="sky" src="sky.jpg" alt="" decoding="async"><div class="cl" id="cl1"><img src="clouds.webp" alt="" decoding="async"><i></i></div></div>
+<img class="L" id="jet" src="jet.webp" alt="" decoding="async">
+<div class="L" id="cl2"><img src="clouds.webp" alt="" decoding="async"><i></i></div>
+<img class="L cover" id="whiteimg" src="cloud-white.jpg" alt="" decoding="async" style="opacity:0">
+<img class="L cover" id="ramp" src="hero-ramp.jpg" alt="Private jets parked on a sunny ramp" decoding="async" fetchpriority="high">
+<div class="L" id="white"></div>
+<div class="shade" id="shade"></div><div id="glow"></div>
+<span class="tag" id="htag">REFERENCE PHOTO</span>
+<div class="cap top" data-a="0" data-b=".17"><span class="eyebrow k">Private Jet Charter</span><h1>Your schedule.<br><em>Your sky.</em></h1></div>
+<div class="cap" data-a=".22" data-b=".44"><span class="eyebrow k">Fort Lauderdale Executive · FXE</span><h1>Wheels up from<br>Fort Lauderdale.</h1></div>
+<div class="cap" data-a=".48" data-b=".68"><h1>Leave the noise<br><em>below.</em></h1></div>
+<div class="cap" data-a=".76" data-b="1.1"><h1>Private aviation,<br>done right.</h1><a class="btn" href="#quote">Request a Flight</a></div>
+<div class="prog" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+<div class="hint" id="hint" aria-hidden="true">SCROLL<i></i></div>
+</div><div id="stickyEnd" aria-hidden="true"></div></div>
+
+<section id="charter"><div class="wrap split">
+<div class="rv"><span class="eyebrow">On-Demand Charter</span><p class="lede">Private jet charter from Fort Lauderdale, <em>built around your schedule.</em></p>
+<p class="body">Tell us when and where. We source the aircraft, plan the trip and look after the details, so the day stays yours.</p>
+<ul class="points"><li><b>I</b><div><h3>One request</h3><p>Share your route and timing. We come back with options.</p></div></li><li><b>II</b><div><h3>Your timetable</h3><p>Depart when you are ready, not when a terminal says so.</p></div></li><li><b>III</b><div><h3>Handled end to end</h3><p>Ground transport, catering and changes, arranged on request.</p></div></li></ul></div>
+<div class="mwrap"><div class="media rv d2"><img src="charter.jpg" alt="A private jet with its stairs down on the ramp at sunset" loading="lazy" decoding="async" width="960" height="1200"><span class="tag">Reference photo</span></div></div>
+</div></section>
+
+<section id="experience" class="alt"><div class="wrap split rev">
+<div class="mwrap"><div class="media rv"><img src="cabin.jpg" alt="A quiet private jet cabin with leather seats and a table set for the flight" loading="lazy" decoding="async" width="691" height="864"><span class="tag">AI concept</span></div><div class="media inset rv d2"><img src="boarding.jpg" alt="A traveler stepping aboard a private jet on the ramp" loading="lazy" decoding="async" width="720" height="900"><span class="tag">Reference photo</span></div></div>
+<div class="rv d2"><span class="eyebrow">The Experience</span><p class="lede">No terminals, no lines. <em>Arrive minutes before wheels up.</em></p>
+<p class="body">Drive to the private terminal, step aboard and settle in. The cabin is yours: work, rest or simply look out the window.</p></div>
+</div></section>
+
+<section id="fleet"><div class="wrap">
+<div class="head rv"><div><span class="eyebrow">The Fleet</span><p class="lede">The right aircraft for every trip, <em>from quick hops to coast-to-coast flights.</em></p></div><p class="note">Example aircraft categories for illustration. Specific aircraft are matched to each trip.</p></div>
+<div class="wide rv"><img src="hangar.jpg" alt="A private jet engine and tail inside a bright hangar" loading="lazy" decoding="async" width="1800" height="900"><span class="tag">Reference photo</span></div>
+<div class="fleet">
+<article class="jet rv"><span class="tag">EXAMPLE CATEGORY</span><svg viewBox="0 0 300 64" aria-hidden="true"><path d="M70 36h120c14 0 26-3 34-8l16-10h8l-8 16c-2 4-6 6-12 6H86c-9 0-14-2-16-4Zm42-2 18-14h10l-10 14M150 40l-22 14h-10l12-14"/></svg><h3>Light Jets</h3><p>Nimble and efficient for shorter regional flights and quick island hops.</p><span class="use">Short trips · Small groups</span></article>
+<article class="jet rv d1"><span class="tag">EXAMPLE CATEGORY</span><svg viewBox="0 0 300 64" aria-hidden="true"><path d="M50 36h150c16 0 28-3 36-9l18-11h9l-9 17c-2 4-7 7-13 7H68c-10 0-16-2-18-4Zm52-2 22-16h12l-12 16M150 40l-26 16h-12l14-16"/></svg><h3>Midsize Jets</h3><p>A balance of cabin comfort and range for longer domestic routes.</p><span class="use">Mid-range · Room to work</span></article>
+<article class="jet rv d2"><span class="tag">EXAMPLE CATEGORY</span><svg viewBox="0 0 300 64" aria-hidden="true"><path d="M26 35h184c18 0 32-4 42-10l20-12h10l-10 19c-3 5-8 8-15 8H46c-12 0-18-2-20-5Zm60-2 26-18h14l-14 18M150 40l-30 18h-14l16-18"/></svg><h3>Heavy Jets</h3><p>Spacious cabins for larger parties and the longest itineraries.</p><span class="use">Long range · Larger groups</span></article>
+</div></div></section>
+
+<div class="band" id="destinations"><img src="sky.jpg" alt="Blue sky above a bank of white clouds" loading="lazy" decoding="async" data-par><span class="tag">AI concept</span>
+<div class="wrap rv"><span class="eyebrow">Destinations</span><p class="lede" style="max-width:640px">The Bahamas by lunch. <em>New York by dinner.</em></p></div></div>
+<section class="alt" id="destlist" style="padding-top:90px"><div class="wrap">
+<div class="head rv"><p class="body" style="margin:0">A few places travelers often fly from South Florida. Any airport, any day, on request.</p><p class="note">Example destinations shown for illustration.</p></div>
+<div class="dest">
+<div class="dst rv"><h3>The Bahamas</h3><p>Island escapes, close to home.</p><small>Example</small></div>
+<div class="dst rv d1"><h3>New York</h3><p>Business, the city, the weekend.</p><small>Example</small></div>
+<div class="dst rv d2"><h3>Washington, D.C.</h3><p>Meetings without the layover.</p><small>Example</small></div>
+<div class="dst rv"><h3>The Caribbean</h3><p>Turquoise water, direct.</p><small>Example</small></div>
+<div class="dst rv d1"><h3>The Mountains</h3><p>Ski season, door to slope.</p><small>Example</small></div>
+<div class="dst rv d2"><h3>Anywhere Else</h3><p>Name it. We plan the route.</p><small>On request</small></div>
+</div></div></section>
+
+<section id="jetcard"><div class="wrap">
+<div class="head rv"><div><span class="eyebrow">Jet Card &amp; Membership</span><p class="lede">For those who fly often, <em>a simpler way to fly.</em></p></div><p class="note">Program details are placeholders for this concept.</p></div>
+<div class="tiers">
+<article class="tier rv"><span class="sub">Jet Card</span><h3 style="margin-top:12px">Fly on your terms</h3><ul><li>One agreement, many trips</li><li>Predictable planning, fewer decisions</li><li>Priority attention from your team</li></ul></article>
+<article class="tier rv d2"><span class="sub">Membership</span><h3 style="margin-top:12px">A standing relationship</h3><ul><li>A dedicated point of contact</li><li>Preferences remembered, every flight</li><li>Early access to availability</li></ul></article>
+</div><p class="fine rv">Terms, pricing and availability to be defined. Nothing on this page is an offer.</p></div></section>
+
+<section id="why" class="alt"><div class="wrap">
+<div class="rv"><span class="eyebrow">Why Presidential</span><p class="lede">Quiet confidence, <em>on every flight.</em></p></div>
+<div class="pillars">
+<div class="pillar rv"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 4 6 9v10c0 9 6 15 14 17 8-2 14-8 14-17V9Z"/><path d="m14 20 4 4 8-8"/></svg><h3>Safety first</h3><p>Safety leads every decision, from aircraft selection to the final weather check.</p></div>
+<div class="pillar rv d1"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="15"/><path d="M8 20h24M20 5c-5 5-5 25 0 30M20 5c5 5 5 25 0 30"/></svg><h3>Discretion</h3><p>Your plans, your guests and your time stay private. Always.</p></div>
+<div class="pillar rv d2"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="15"/><path d="M20 11v9l6 4"/></svg><h3>Around the clock</h3><p>Plans change. A real person is ready to help, day or night.</p></div>
+</div></div></section>
+
+<section id="quote"><div class="wrap">
+<div class="head rv"><span class="eyebrow">Request a Quote</span><p class="lede" style="text-align:center;max-width:760px">Tell us where you're going. <em>We'll handle the rest.</em></p></div>
+<form id="qf" class="rv d1" novalidate>
+<div class="f full"><span class="lbl">Trip</span><div class="trip" role="group" aria-label="Trip type"><button type="button" class="on" data-t="ow">One way</button><button type="button" data-t="rt">Round trip</button></div></div>
+<div class="f"><label for="from">From</label><input id="from" placeholder="Fort Lauderdale (FXE)" autocomplete="off"></div>
+<div class="f"><label for="to">To</label><input id="to" placeholder="City or airport" autocomplete="off"></div>
+<div class="f"><label for="dd">Departure date</label><input id="dd" type="date"></div>
+<div class="f ret" id="ret" hidden><label for="rd">Return date</label><input id="rd" type="date"></div>
+<div class="f"><label for="pax">Passengers</label><select id="pax"><option>1</option><option>2</option><option selected>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9+</option></select></div>
+<div class="f"><label for="nm">Name</label><input id="nm" autocomplete="name" placeholder="Full name"></div>
+<div class="f"><label for="em">Email</label><input id="em" type="email" autocomplete="email" placeholder="you@example.com"></div>
+<div class="f"><label for="ph">Phone</label><input id="ph" type="tel" autocomplete="tel" placeholder="(000) 000-0000"></div>
+<div class="submit"><small>Concept form. Nothing is sent.</small><button class="btn" type="submit">Request a Quote</button></div>
+</form></div></section>
+
+<a class="sticky" id="stk" href="#quote">Request a Flight</a>
+<footer><div class="row"><a class="wm" href="#top"><b>FLY PRESIDENTIAL</b><small>FORT LAUDERDALE · FXE</small></a><p>Private jet charter<br>Fort Lauderdale Executive Airport (FXE)</p></div>
+<div class="legal">Concept preview by GEIT Marketing. Not affiliated content; placeholder copy.<br>Imagery: reference photos provided for this concept (marked “Reference photo”) and AI-generated concept images (marked “AI concept”). All are placeholders to be replaced with licensed or owned photography before launch. Aircraft categories and destinations are examples. No specifications, ratings or prices are stated.</div></footer>
+
+<script>
+{const q=new URLSearchParams(location.search);if(q.has("p"))window.__p=+q.get("p");if(q.has("nohero"))document.addEventListener("DOMContentLoaded",()=>{hero.style.display="none"});if(q.has("static"))document.documentElement.classList.add("static")}
+const hero=document.getElementById('hero'),caps=[...document.querySelectorAll('.cap')],bars=[...document.querySelectorAll('.prog span')],hint=document.getElementById('hint'),nav=document.getElementById('nav');
+const $=id=>document.getElementById(id),ramp=$('ramp'),scene=$('scene'),cl1=$('cl1'),jet=$('jet'),cl2=$('cl2'),wimg=$('whiteimg'),white=$('white'),shade=$('shade'),glow=$('glow'),htag=$('htag');
+const cl=x=>Math.max(0,Math.min(1,x)),seg=(p,a,b)=>cl((p-a)/(b-a)),es=t=>t*t*(3-2*t),io=t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2,L=(a,b,t)=>a+(b-a)*t;
+let sp=0,last=-1;
+function prog(){if(window.__p!=null)return window.__p;return cl(scrollY/(hero.offsetHeight-innerHeight))}
+function draw(p){if(Math.abs(p-last)<.0004)return;last=p;const mob=innerWidth<=760;
+/* 1 ramp photo: slow push-in, camera tilts up, fades to sky */
+const r=seg(p,0,.26),rf=es(seg(p,.13,.27));ramp.style.opacity=1-rf;ramp.style.transform=`translate3d(0,${(r*7).toFixed(2)}%,0) scale(${(1.03+r*.12).toFixed(4)})`;
+/* 2 sky scene settles, drifts down as we climb */
+const s=es(seg(p,.13,.32)),d=seg(p,.3,.8);scene.style.transform=`translate(-50%,-50%) translate3d(0,${(d*6).toFixed(2)}vh,0) scale(${(1.14-s*.14+d*.04).toFixed(4)})`;
+cl1.style.transform=`translate3d(0,${(-d*16).toFixed(2)}%,0)`;
+/* 3 jet climbs up and away: smaller, up/right, slight rotation, then into the cloud */
+const j=io(seg(p,.16,.66)),ja=es(seg(p,.14,.24))*(1-es(seg(p,.6,.68)));
+const tx=mob?L(-4,22,j):L(-8,26,j),ty=L(14,-24,j);jet.style.opacity=ja.toFixed(3);
+jet.style.transform=`translate3d(${tx.toFixed(2)}vw,${ty.toFixed(2)}vh,0) rotate(${L(4,-7,j).toFixed(2)}deg) scale(${L(1.22,.2,j).toFixed(4)})`;jet.style.filter=`blur(${(seg(p,.55,.67)*2.4).toFixed(2)}px) drop-shadow(0 8px 18px rgba(11,22,38,.18))`;
+/* 4 dense cloud bank rises and fills the screen */
+const c=es(seg(p,.42,.74));cl2.style.transform=`translate(-50%,0) translate3d(0,${L(100,-62,c).toFixed(2)}vh,0) scale(${L(1,1.25,c).toFixed(4)})`;
+/* 5 inside the cloud, then the page turns white */
+const w=es(seg(p,.62,.78));wimg.style.opacity=w.toFixed(3);wimg.style.transform=`scale(${L(1.18,1.02,seg(p,.62,1)).toFixed(4)})`;
+white.style.opacity=es(seg(p,.82,.97)).toFixed(3);
+shade.style.opacity=((.2+.8*es(seg(p,.1,.22)))*(1-es(seg(p,.6,.8))*.6)).toFixed(3);glow.style.opacity=(1-es(seg(p,.12,.22))).toFixed(3);
+htag.textContent=p<.17?'REFERENCE PHOTO':'AI CONCEPT';htag.style.opacity=p>.9?0:1}
+function ui(p){caps.forEach((c,i)=>{const on=p>=+c.dataset.a&&p<+c.dataset.b;c.classList.toggle('on',on);bars[i]&&bars[i].classList.toggle('on',on)});hint.style.opacity=p>.03?0:1;
+const past=scrollY>hero.offsetHeight-innerHeight*1.05;nav.classList.toggle('solid',past);nav.classList.toggle('light',!past&&p>.66)}
+function tick(){const p=prog();sp+=(p-sp)*(window.__p!=null?1:.12);if(Math.abs(p-sp)<.0005)sp=p;draw(sp);ui(p);requestAnimationFrame(tick)}
+addEventListener('resize',()=>{last=-1});requestAnimationFrame(tick);
+/* burger */
+const bg=document.getElementById('burger');bg.onclick=()=>{const o=nav.classList.toggle('open');bg.setAttribute('aria-expanded',o)};document.getElementById('links').onclick=e=>{if(e.target.tagName==='A'){nav.classList.remove('open');bg.setAttribute('aria-expanded',false)}};
+/* reveals */
+const rvs=document.querySelectorAll('.rv');if('IntersectionObserver' in window&&!document.documentElement.classList.contains('static')){const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px',threshold:.08});rvs.forEach(r=>ro.observe(r))}else rvs.forEach(r=>r.classList.add('in'));
+/* gentle parallax on band image */
+const par=document.querySelector('[data-par]');addEventListener('scroll',()=>{if(!par)return;const r=par.parentElement.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight)return;const t=(r.top+r.height/2-innerHeight/2)/innerHeight;par.style.transform='translate3d(0,'+(t*-5).toFixed(2)+'%,0)'},{passive:true});
+/* sticky CTA: hide while the hero's final CTA or the form is on screen */
+if('IntersectionObserver' in window){const stk=document.getElementById('stk'),vis=new Set();const io=new IntersectionObserver(es=>{es.forEach(e=>e.isIntersecting?vis.add(e.target):vis.delete(e.target));stk.classList.toggle('hide',vis.size>0)});[document.getElementById('stickyEnd'),document.getElementById('quote')].forEach(el=>el&&io.observe(el))}
+/* trip toggle + mock submit */
+const ret=document.getElementById('ret');document.querySelectorAll('.trip button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.trip button').forEach(x=>x.classList.remove('on'));b.classList.add('on');ret.hidden=b.dataset.t!=='rt'});
+document.getElementById('qf').addEventListener('submit',e=>{e.preventDefault();e.target.innerHTML='<div class="done"><h3>Thank you.</h3><p>This is a concept preview. Nothing was sent.</p></div>'});
+</script></body></html>
